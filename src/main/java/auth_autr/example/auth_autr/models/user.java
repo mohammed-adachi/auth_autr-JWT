@@ -58,7 +58,9 @@ public class user {
         this.password = password;
         this.role = role;
     }
-    
+    public user() {
+       
+    }
 
 
 }
