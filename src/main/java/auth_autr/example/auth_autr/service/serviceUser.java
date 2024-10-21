@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class serviceUser implements UserDetailsService {
@@ -17,16 +19,17 @@ public class serviceUser implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
       
-          var userapp = userrepositry.findByUsername(username);      
-        if(userapp != null){
-           var springuser=User.withUsername(userapp.getUsername())
-           .password(userapp.getPassword())
-           .roles(userapp.getRole())
-           .build();
-              return springuser;
-          
-       }
-       return null;
+     user user = userrepositry.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
+
+        return new org.springframework.security.core.userdetails.User(
+            user.getUsername(),
+            user.getPassword(),  // Assurez-vous que c'est le mot de passe encodé
+            new ArrayList<>()
+        );  
+      
     }
 
 }
