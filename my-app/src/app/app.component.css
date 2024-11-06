@@ -1,4 +1,6 @@
+ /* 
 .login-container {
+
   background-color: #f0f0f0;
   padding: 40px;
   text-align: center;
@@ -9,15 +11,16 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 300px;
-
 }
 
 .logo {
+
   max-width: 150px;
   margin-bottom: 20px;
 }
 
 .input-field {
+
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -28,6 +31,7 @@
 }
 
 .forgot-password {
+
   color: #007185;
   text-decoration: none;
   font-size: 14px;
@@ -36,6 +40,7 @@
 }
 
 .login-button {
+
   background-color: #007185;
   color: white;
   padding: 14px 20px;
@@ -47,6 +52,7 @@
 }
 
 .create-account {
+
   color: #007185;
   text-decoration: none;
   font-size: 14px;
@@ -55,8 +61,11 @@
 }
 
 .error-message {
+
   color: red;
   font-size: 14px;
   text-align: left;
   margin-top: 5px;
+
 }
+*/
