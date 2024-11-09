@@ -12,6 +12,7 @@
     <div class="form-group">
       <input
         type="text"
+        id="username"
         formControlName="username"
         placeholder="username"
         class="input-field"
@@ -27,6 +28,7 @@
       <input
         type="text"
         formControlName="role"
+        id="role"
         placeholder="Role"
         class="input-field"
       >
@@ -55,6 +57,7 @@
     <div class="form-group">
       <input
         type="password"
+        id="password"
         formControlName="password"
         placeholder="Password"
         class="input-field"
@@ -65,10 +68,7 @@
         Password is required and must be at least 6 characters long
       </div>
     </div>
-    <div class="form-group">
 
-      <input type="password" class="input-field" placeholder="Confirm Password" id="confirmPassword" formControlName="confirmPassword" />
-  </div>
 
     <button type="submit"  class="register-button"  [disabled]="registerForm.invalid">
       Register
@@ -78,5 +78,4 @@
       <span>Already have an account?</span>
       <a href="#" class="login-link">Login</a>
     </div>
-  </form>
-</div>
+
