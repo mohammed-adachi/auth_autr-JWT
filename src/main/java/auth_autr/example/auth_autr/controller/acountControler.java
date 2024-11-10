@@ -22,7 +22,7 @@ import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -35,6 +35,7 @@ import auth_autr.example.auth_autr.models.user;
 import auth_autr.example.auth_autr.repositry.userrepositry;
 import jakarta.validation.Valid;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/acount")
 public class acountControler {

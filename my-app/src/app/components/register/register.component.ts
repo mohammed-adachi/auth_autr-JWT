@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { JwtService } from '../../service/jwt.service';
+import { HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -10,12 +11,13 @@ import { JwtService } from '../../service/jwt.service';
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup
+  formResult: string = "";
 
   constructor(
     private service: JwtService,
     private fb: FormBuilder
   ) { }
-  register() {
+  /*registers() {
     const userData = {
       "username": "admin",
       "role": "user",
@@ -31,7 +33,7 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
-
+*/
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required]],
@@ -53,13 +55,18 @@ export class RegisterComponent implements OnInit {
  */
 
   submitForm() {
+    if (this.registerForm.valid) {
+      const formValues = this.registerForm.value; // L'objet JavaScript
 
-    this.service.register({
-      "username": "user1",
-      "role": "user2",
-      "email": "mohammmmed.adachi1@usmba.ac.ma",
-      "password": "12345678"
-    }).subscribe(
+      // Options HTTP avec en-tête Content-Type
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      };  
+    this.service.register(
+      formValues, httpOptions
+    ).subscribe(
       (response) => {
         if (response.id != null) {
           alert("Hello " + response.username);
@@ -72,3 +79,4 @@ export class RegisterComponent implements OnInit {
 
 
 
+}

@@ -6,13 +6,6 @@ const BASE_URL = 'http://localhost:8082/account/';
 const apiUrl = 'http://localhost:8082/home';
 export interface RegisterResponse {
 
-  user: {
-    username: string;
-    email: string;
-    password: string;
-    role: string;
-  };
-  token: string;
 }
 @Injectable({
   providedIn: 'root'
@@ -26,9 +19,9 @@ export class JwtService {
 
   }
 
-  register(signRequest: any): Observable<any> {
+  register(signRequest: any,httpOptions:any): Observable<any> {
     console.log(signRequest)
-    return this.http.post("http://localhost:8082/acount/register", signRequest);
+    return this.http.post("http://localhost:8082/acount/register", signRequest,httpOptions);
   }
   private handleError(error: any) {
     console.error('Erreur détectée :', error);
