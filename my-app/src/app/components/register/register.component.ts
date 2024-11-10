@@ -39,10 +39,11 @@ export class RegisterComponent implements OnInit {
       username: ['', [Validators.required]],
       role: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
-    });
+      password: ['', [Validators.required]],
+      confirmPassword: ['', [Validators.required]],
+    }, { validator: this.passwordMathValidator })
 }
-/*
+
   passwordMathValidator(formGroup: FormGroup) {
     const password = formGroup.get('password')?.value;
     const confirmPassword = formGroup.get('confirmPassword')?.value;
@@ -52,7 +53,7 @@ export class RegisterComponent implements OnInit {
       formGroup.get('confirmPassword')?.setErrors(null);
   }
   }
- */
+
 
   submitForm() {
     if (this.registerForm.valid) {
@@ -66,12 +67,20 @@ export class RegisterComponent implements OnInit {
       };  
     this.service.register(
       formValues, httpOptions
-    ).subscribe(
-      (response) => {
-        if (response.id != null) {
+    ).subscribe({
+      next: (response) => {
+        console.log(response); // Vérifie la réponse
+        if (response.username != null) {
           alert("Hello " + response.username);
         }
+      },
+      error: (error) => {
+        console.error("Erreur lors de l'enregistrement :", error);
+      },
+      complete: () => {
+        console.log("Souscription terminée.");
       }
+    }
     )
   }
 

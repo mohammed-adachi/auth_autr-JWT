@@ -10,6 +10,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { _AuthComponent  } from './auth.auhtService';
 import { CommonModule } from '@angular/common';
+import { LoginComponent } from './components/login/login.component';
+
 
 @NgModule({
 
@@ -18,6 +20,7 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     RegisterComponent,
     _AuthComponent,
+    LoginComponent,
 
   ],
   imports: [

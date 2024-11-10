@@ -23,6 +23,11 @@ export class JwtService {
     console.log(signRequest)
     return this.http.post("http://localhost:8082/acount/register", signRequest,httpOptions);
   }
+  login(signRequest: any,httpOptions:any): Observable<any> {
+    console.log(signRequest)
+    return this.http.post("http://localhost:8082/acount/login", signRequest,httpOptions);
+  }
+
   private handleError(error: any) {
     console.error('Erreur détectée :', error);
     return throwError(error);
